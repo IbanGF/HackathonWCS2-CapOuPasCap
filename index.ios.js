@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+/*jshint esversion: 6 */
 
 import React, {
   AppRegistry,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#403197',
   },
   welcome: {
     fontSize: 20,

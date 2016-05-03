@@ -9,6 +9,7 @@
     "react": "^0.14.8",
     "react-native": "^0.24.1",
     "react-native-cordova-plugin": "^1.0.1",
+    "react-native-location": "^0.14.3",
     "react-native-vector-icons": "^1.3.4"
   }
 }

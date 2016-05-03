@@ -1,8 +1,10 @@
+
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
 /*jshint esversion: 6 */
+
 
 import React, {
     AppRegistry,
@@ -13,20 +15,13 @@ import React, {
     View,
 } from 'react-native';
 
-
 class hackathon extends Component {
 
-
-  getInitialState() {
-     return {
-       myText : "Hello, Tableless!",
-     };
-  }
-
-  textInputDidChange(event) {
-     this.setState({
-        myText: event.nativeEvent.text
-      });
+  constructor(props) {
+    super(props);
+    this.state = {
+      myText : ''
+    };
   }
 
     render() {
@@ -34,7 +29,7 @@ class hackathon extends Component {
           < View style = {styles.container} >
               < Text style = {styles.welcome} >
                     Welcome to React Native!
-              </Text>
+              < /Text>
               < Text style = {styles.instructions} >
                 To get started, edit index.android.js
               < /Text>
@@ -46,10 +41,13 @@ class hackathon extends Component {
                   placeholder = {'Type your Name here'}
                   placeholderTextColor = {'#FFAADD'}
                   style = {styles.textInput}
+                  value={this.state.myText}
+                  onChangeText={myText => this.setState({myText})}
                   selectTextOnFocus = {true}
-                  //onChange={this.textInputDidChange}
-                  //value={this.getInitialState}
             />
+
+            <Text>{this.state.myText}</Text>
+
         < /View >
       );
     }
@@ -91,35 +89,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('hackathon', () => hackathon);
-
-
-
-/*
-< View style = {styles.container} >
-    <Text onPress={isModalOpen => this.setState({isModalOpen: true})}>
-      Open Modal.
-    </Text>
-    < Text style = {styles.welcome} >
-          Welcome to React Native!
-    < /Text>
-    < Text style = {styles.instructions} >
-      To get started, edit index.android.js
-    < /Text>
-    < Text style = {styles.instructions} >
-      Shake or press menu button for dev menu
-  < /Text>
-
-  < TextInput
-        placeholder = {'Type your Name here'}
-        placeholderTextColor = {'#FFAADD'}
-        style = {styles.textInput}
-        value={this.state.myText}
-        onChangeText={myText => this.setState({myText})}
-        selectTextOnFocus = {true}
-  />
-
-  <Text>{this.state.myText}</Text>
-  <Modal isVisible={this.state.isModalOpen} onClose={isModalOpen => this.setState({isModalOpen: false})}>
-   <Text>Hello world!</Text>
- </Modal>
-< /View >*/

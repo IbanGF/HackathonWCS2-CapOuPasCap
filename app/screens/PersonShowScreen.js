@@ -37,32 +37,32 @@ class PersonShowScreen extends Component {
         <TouchableOpacity onPress={() => this.props.navigator.pop() }>
           <Icon name="chevron-left" style={{marginTop: 15, marginLeft: 10}} size={20} />
         </TouchableOpacity>
-          <Card style={styles.container}>
-            <View>
-              <Card.Media
-                style={styles.profileImage}
-                image={<Image source={this.props.person.avatar} />}
-                overlay
-              />
-              <Card.Body>
-                <Text style={styles.personFirstName}>{`${_.capitalize(this.props.person.firstName)}`}</Text>
-                <Text style={styles.personLastName}>{`${_.capitalize(this.props.person.lastName)}`}</Text>
-              </Card.Body>
-            </View>
-          </Card>
-            <Card style={styles.container}>
-              <View>
-                <Card.Body>
-                  <ListView
-                    initialListSize={10}
-                    dataSource={this.state.challengesDataSource}
-                    renderRow={(challenge) => this._renderChallengeRow(challenge) } />
-                </Card.Body>
-                <Card.Actions>
-                  <Button raised = {true} primary = {"paperDeepOrange"} text = {"T\'es cap ?"} theme = {"dark"} onPress={() => this.props.navigator.pop()}/>
-                </Card.Actions>
-              </View>
-            </Card>
+        <Card style={styles.container}>
+          <View>
+            <Card.Media
+              style={styles.profileImage}
+              image={<Image source={this.props.person.avatar} />}
+              overlay
+            />
+            <Card.Body>
+              <Text style={styles.personFirstName}>{`${_.capitalize(this.props.person.firstName)}`}</Text>
+              <Text style={styles.personLastName}>{`${_.capitalize(this.props.person.lastName)}`}</Text>
+            </Card.Body>
+          </View>
+        </Card>
+        <Card style={styles.container}>
+          <View>
+            <Card.Body>
+              <ListView
+                initialListSize={10}
+                dataSource={this.state.challengesDataSource}
+                renderRow={(challenge) => this._renderChallengeRow(challenge) } />
+            </Card.Body>
+            <Card.Actions>
+              <Button raised = {true} primary = {"paperDeepOrange"} text = {"T\'es cap ?"} theme = {"dark"} onPress={() => this.props.navigator.pop()}/>
+            </Card.Actions>
+          </View>
+        </Card>
       </ViewContainer>
     )
   }

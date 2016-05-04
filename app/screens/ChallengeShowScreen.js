@@ -1,8 +1,9 @@
 'use strict'
-import React, { Component, Text, View, ListView, TouchableOpacity, Navigator, Image, Tab, TabLayout } from 'react-native'
+import React, { Component, Text, View, TouchableOpacity, Navigator, Image } from 'react-native'
 import ViewContainer from '../components/ViewContainer';
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Avatar, Button, PRIMARY_COLORS, COLOR, Card } from 'react-native-material-design';
 
 
 const challenge = [
@@ -27,11 +28,16 @@ class ChallengeShowScreen extends Component {
         <TouchableOpacity onPress={() => this.props.navigator.pop() }>
           <Icon name="chevron-left" style={{marginTop: 15, marginLeft: 10}} size={20} />
         </TouchableOpacity>
-        <View style={styles.versusWrapper}>
-          <Image style={styles.thumbnail} source={require('../../assets/avatars/iban.jpg')} />
-          <Image style={styles.thumbnail} source={this.props.person.avatar} />
-        </View>
-        <Text>{this.props.person.firstName}</Text>
+
+        <Card style={styles.container}>
+          <View>
+            <Card.Body style={styles.versusWrapper}>
+              <Image style={styles.thumbnail} source={require('../../assets/avatars/iban.jpg')} />
+              <Image style={styles.thumbnail} source={this.props.person.avatar} />
+              <Text>{this.props.person.firstName}</Text>
+            </Card.Body>
+          </View>
+        </Card>
       </ViewContainer>
     )
   }
@@ -39,11 +45,11 @@ class ChallengeShowScreen extends Component {
 }
 
 const styles = React.StyleSheet.create({
-  personMoreIcon: {
-    color: "#004D40",
-    height: 25,
-    marginRight: 25,
-    marginTop: 16, // :-D
+
+  container: {
+    marginTop: 10,
+    flexDirection: "column",
+    alignItems: "center",
   },
 
   versusWrapper: {

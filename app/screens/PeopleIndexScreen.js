@@ -1,5 +1,5 @@
 'use strict'
-import React, { Component, Text, View, ListView, TouchableOpacity, Navigator, Image, Tab, TabLayout } from 'react-native'
+import React, { Component, Text, View, ListView, TouchableOpacity, Navigator, Image } from 'react-native'
 import ViewContainer from '../components/ViewContainer'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'

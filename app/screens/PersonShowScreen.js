@@ -33,10 +33,12 @@ class PersonShowScreen extends Component {
 
     return (
       <ViewContainer style={{backgroundColor: personBackgroundColor}}>
-
+      <View style={styles.toolbar}>
         <TouchableOpacity onPress={() => this.props.navigator.pop() }>
           <Icon name="chevron-left" style={{marginTop: 15, marginLeft: 10}} size={20} />
         </TouchableOpacity>
+        <Text style={styles.toolbarTitle}>Choice your Challenge</Text>
+      </View>
         <Card style={styles.containerProfile}>
           <View style={styles.profilePerson}>
             <Image style={styles.profileImage} source={this.props.person.avatar} />
@@ -46,7 +48,7 @@ class PersonShowScreen extends Component {
         <Card style={styles.container}>
           <View>
             <Card.Body>
-              <ListView 
+              <ListView
                 initialListSize={10}
                 dataSource={this.state.challengesDataSource}
                 renderRow={(challenge) => this._renderChallengeRow(challenge) } />
@@ -63,8 +65,8 @@ class PersonShowScreen extends Component {
   _renderChallengeRow(challenge) {
       return (
         <TouchableOpacity style={styles.personRow} onPress={(event) => this._navigateToChallengeShow(challenge) }>
-          <Text>{`${_.capitalize(challenge.title)} ${_.capitalize(challenge.description)}`}</Text>
-          <View style={{flex: 1}} />
+          <Text>{`${_.capitalize(challenge.title)}`}</Text>
+          <Text>{`${_.capitalize(challenge.description)}`}</Text>
           <Icon name="chevron-right" size={20} style={styles.personMoreIcon} />
         </TouchableOpacity>
       )
@@ -116,7 +118,6 @@ const styles = React.StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     height: 100,
-    marginLeft: 5,
   },
 
   personMoreIcon: {
@@ -124,7 +125,23 @@ const styles = React.StyleSheet.create({
     height: 25,
     marginRight: 25,
     marginTop: 16, // :-D
-  }
+  },
+
+  toolbar:{
+      backgroundColor:'#81c04d',
+      paddingTop:40,
+      paddingBottom:10,
+      flexDirection:'row',
+  },
+
+  toolbarTitle:{
+      color:'#fff',
+      textAlign:'center',
+      fontWeight:'bold',
+      fontSize: 30,
+      flex:1,
+
+  },
 
 });
 

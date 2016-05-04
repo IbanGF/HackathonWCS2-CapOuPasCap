@@ -37,23 +37,16 @@ class PersonShowScreen extends Component {
         <TouchableOpacity onPress={() => this.props.navigator.pop() }>
           <Icon name="chevron-left" style={{marginTop: 15, marginLeft: 10}} size={20} />
         </TouchableOpacity>
-        <Card style={styles.container}>
-          <View>
-            <Card.Media
-              style={styles.profileImage}
-              image={<Image source={this.props.person.avatar} />}
-              overlay
-            />
-            <Card.Body>
-              <Text style={styles.personFirstName}>{`${_.capitalize(this.props.person.firstName)}`}</Text>
-              <Text style={styles.personLastName}>{`${_.capitalize(this.props.person.lastName)}`}</Text>
-            </Card.Body>
+        <Card style={styles.containerProfile}>
+          <View style={styles.profilePerson}>
+            <Image style={styles.profileImage} source={this.props.person.avatar} />
+            <Text style={styles.personName}>{`${_.capitalize(this.props.person.firstName)}`} {`${_.capitalize(this.props.person.lastName)}`}</Text>
           </View>
         </Card>
         <Card style={styles.container}>
           <View>
             <Card.Body>
-              <ListView
+              <ListView 
                 initialListSize={10}
                 dataSource={this.state.challengesDataSource}
                 renderRow={(challenge) => this._renderChallengeRow(challenge) } />
@@ -95,25 +88,35 @@ const styles = React.StyleSheet.create({
     alignItems: "center",
   },
 
-  profileImage: {
+  containerProfile: {
     marginTop: 10,
-    backgroundColor: 'black',
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: '#ccc',
   },
 
-  personFirstName: {
+  profileImage: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+
+  profilePerson: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+
+  personName: {
     fontSize: 45,
-  },
-
-  personLastName: {
-    fontSize: 30,
+    textAlign:'center',
+    padding: 10,
   },
 
   personRow: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "stretch",
-    height: 70,
-    marginLeft: 10,
+    alignItems: "center",
+    height: 100,
+    marginLeft: 5,
   },
 
   personMoreIcon: {

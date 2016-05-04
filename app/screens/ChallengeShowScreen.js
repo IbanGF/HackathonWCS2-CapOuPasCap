@@ -70,7 +70,7 @@ const styles = React.StyleSheet.create({
     content:{
         backgroundColor:'#ebeef0',
         flexDirection:'row',
-          padding: 15,
+        padding: 15,
         flex:1,
     },
 });

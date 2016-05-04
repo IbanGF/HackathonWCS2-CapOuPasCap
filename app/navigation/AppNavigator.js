@@ -2,6 +2,7 @@
 import React, { Component, Navigator, Text, BackAndroid } from 'react-native'
 import PeopleIndexScreen from '../screens/PeopleIndexScreen'
 import PersonShowScreen from '../screens/PersonShowScreen'
+import ChallengeShowScreen from '../screens/ChallengeShowScreen'
 
 var _navigator;
 
@@ -34,6 +35,14 @@ class AppNavigator extends Component {
             {...globalNavigatorProps}
             person={route.person} />
         )
+
+      case "ChallengeShow":
+          return (
+            <ChallengeShowScreen
+              {...globalNavigatorProps}
+              person={route.person}
+              challenge={route.challenge} />
+          )
 
       default:
         return (

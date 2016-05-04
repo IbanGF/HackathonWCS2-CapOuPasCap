@@ -16,7 +16,7 @@ class PersonShowScreen extends Component {
     super(props)
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
     this.state = {
-      peopleDataSource: ds.cloneWithRows(challenge)
+      challengesDataSource: ds.cloneWithRows(challenge)
     }
   }
 
@@ -48,13 +48,41 @@ class PersonShowScreen extends Component {
                 <Text style={styles.personFirstName}>{`${_.capitalize(this.props.person.firstName)}`}</Text>
                 <Text style={styles.personLastName}>{`${_.capitalize(this.props.person.lastName)}`}</Text>
               </Card.Body>
-              <Card.Actions>
-                <Button raised = {true} primary = {"paperDeepOrange"} text = {"T\'es cap ?"} theme = {"dark"} onPress={() => this.props.navigator.pop()}/>
-              </Card.Actions>
             </View>
           </Card>
+            <Card style={styles.container}>
+              <View>
+                <Card.Body>
+                  <ListView
+                    initialListSize={10}
+                    dataSource={this.state.challengesDataSource}
+                    renderRow={(challenge) => this._renderChallengeRow(challenge) } />
+                </Card.Body>
+                <Card.Actions>
+                  <Button raised = {true} primary = {"paperDeepOrange"} text = {"T\'es cap ?"} theme = {"dark"} onPress={() => this.props.navigator.pop()}/>
+                </Card.Actions>
+              </View>
+            </Card>
       </ViewContainer>
     )
+  }
+
+  _renderChallengeRow(challenge) {
+      return (
+        <TouchableOpacity style={styles.personRow} onPress={(event) => this._navigateToChallengeShow(challenge) }>
+          <Text>{`${_.capitalize(challenge.title)} ${_.capitalize(challenge.description)}`}</Text>
+          <View style={{flex: 1}} />
+          <Icon name="chevron-right" size={20} style={styles.personMoreIcon} />
+        </TouchableOpacity>
+      )
+    }
+
+  _navigateToChallengeShow(challenge) {
+    this.props.navigator.push({
+      ident: "ChallengeShow",
+      challenge,
+      person: this.props.person
+    })
   }
 
 }
@@ -62,12 +90,13 @@ class PersonShowScreen extends Component {
 const styles = React.StyleSheet.create({
 
   container: {
-    marginTop: 40,
+    marginTop: 10,
     flexDirection: "column",
     alignItems: "center",
   },
 
   profileImage: {
+    marginTop: 10,
     backgroundColor: 'black',
   },
 
@@ -78,6 +107,21 @@ const styles = React.StyleSheet.create({
   personLastName: {
     fontSize: 30,
   },
+
+  personRow: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "stretch",
+    height: 70,
+    marginLeft: 10,
+  },
+
+  personMoreIcon: {
+    color: "#004D40",
+    height: 25,
+    marginRight: 25,
+    marginTop: 16, // :-D
+  }
 
 });
 

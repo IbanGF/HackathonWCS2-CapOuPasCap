@@ -41,7 +41,7 @@ class PeopleIndexScreen extends Component {
         <ListView
           initialListSize={10}
           dataSource={this.state.peopleDataSource}
-          renderRow={(person) => { return this._renderPersonRow(person) }} />
+          renderRow={(person) => this._renderPersonRow(person)} />
       </ViewContainer>
     )
   }
@@ -74,12 +74,6 @@ const styles = React.StyleSheet.create({
     height: 100,
     backgroundColor: "#004D40",
     marginBottom: 15,
-  },
-
-  avatar: {
-    width: 20à,
-    height: 200,
-    backgroundColor: 'transparent',
   },
 
   titleText: {

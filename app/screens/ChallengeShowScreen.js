@@ -47,8 +47,8 @@ const styles = React.StyleSheet.create({
 
 
   thumbnail: {
-      width: 150,
-      height: 150,
+      width: 200,
+      height: 200,
       marginTop: 30,
     },
     toolbar:{
